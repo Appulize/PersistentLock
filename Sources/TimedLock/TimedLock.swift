@@ -55,7 +55,7 @@ public actor TimedLock {
     
     public var isLocked: Bool {
         get {
-            Date().timeIntervalSince(lockedUntil) > 0
+            Date().timeIntervalSince(lockedUntil) < 0
         }
     }
     
@@ -72,7 +72,7 @@ public actor TimedLock {
     @discardableResult
     public func lock(until date: Date, onExpire: Completion? = nil) -> Bool {
         guard !isLocked else {
-            print("TimedLock: Failed to get lock on \(identifier), already locked until \(date.description)")
+            print("TimedLock: Failed to get lock on \(identifier), already locked until \(lockedUntil.description)")
             
             return false
         }
