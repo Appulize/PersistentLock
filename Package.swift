@@ -15,12 +15,15 @@ let package = Package(
         .library(
             name: "TimedLock",
             targets: ["TimedLock"]
-        ),
+        )
+    ],
+    dependencies: [
+        .package(url: "https://github.com/Appulize/AppulizeStandardTools.git", .upToNextMajor(from: "1.0.0")),
     ],
     targets: [
         .target(
             name: "TimedLock",
-            dependencies: []
+            dependencies: ["AppulizeStandardTools"]
         ),
     ]
 )

@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "appulizestandardtools",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Appulize/AppulizeStandardTools.git",
+      "state" : {
+        "revision" : "0730f7ec409a1bb87a1d463d46270483fbb7dbf1",
+        "version" : "1.0.9"
+      }
+    }
+  ],
+  "version" : 2
+}

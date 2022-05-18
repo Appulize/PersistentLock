@@ -21,6 +21,7 @@
  */
 
 import Foundation
+import AppulizeStandardTools
 
 @available(macOS 10.14, iOS 13.0, watchOS 8.0, tvOS 12.0, *)
 public actor TimedLock {
@@ -38,14 +39,14 @@ public actor TimedLock {
             let timeInterval = TimeInterval(UserDefaults.standard.double(forKey: key))
             let date = Date(timeIntervalSince1970: timeInterval)
             
-            print("TimedLock: \(identifier) is locked until \(date.description)")
+            dLog("TimedLock: \(identifier) is locked until \(date.description)")
             
             return date
         }
         set {
             UserDefaults.standard.set(newValue.timeIntervalSince1970, forKey: key)
             
-            print("TimedLock: \(identifier) has been locked until \(newValue.description)")
+            dLog("TimedLock: \(identifier) has been locked until \(newValue.description)")
         }
     }
     
@@ -72,7 +73,7 @@ public actor TimedLock {
     @discardableResult
     public func lock(until date: Date, onExpire: Completion? = nil) -> Bool {
         guard !isLocked else {
-            print("TimedLock: Failed to get lock on \(identifier), already locked until \(lockedUntil.description)")
+            dLog("TimedLock: Failed to get lock on \(identifier), already locked until \(lockedUntil.description)")
             
             return false
         }
